@@ -1,0 +1,14 @@
+# Virtuelle Umgebung
+magic/
+venv/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Betriebssystem-Dateien
+.DS_Store
+Thumbs.db
