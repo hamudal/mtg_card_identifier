@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # mtg_identifier.py
 
 import sys
@@ -34,44 +35,61 @@ def get_usd_to_eur_rate() -> float:
     data = resp.json()
     return data["rates"]["EUR"]
 
-def main():
+def parse_args():
     parser = argparse.ArgumentParser(
-        description="MTG Card Identifier: ruft Kartendaten von Scryfall ab und speichert sie als CSV."
+        description="MTG Card Identifier: ruft Kartendaten ab und speichert sie als CSV."
     )
-    parser.add_argument("card_name", type=str, help="Exakter Name der MTG-Karte (z.B. \"Lightning Bolt\").")
-    args = parser.parse_args()
+    parser.add_argument("card_name", type=str,
+                        help='Exakter Name der MTG-Karte (z.B. "Lightning Bolt")')
+    parser.add_argument("-o", "--output", type=str, default=None,
+                        help="Pfad zur Ausgabedatei (CSV). Default: <card_name>_info.csv")
+    parser.add_argument("--no-eur", action="store_true",
+                        help="Kein EUR-Feld berechnen (nur USD).")
+    parser.add_argument("-v", "--verbose", action="store_true",
+                        help="Ausführliche Console-Ausgabe (inkl. Oracle Text, Image URL).")
+    return parser.parse_args()
 
-    sample = args.card_name
+def main():
+    args = parse_args()
+    name = args.card_name
 
     try:
         # 1) Kartendaten holen
-        card_info = fetch_card_data(sample)
+        card_info = fetch_card_data(name)
 
         # 2) DataFrame bauen
         df = pd.DataFrame([card_info])
 
-        # 3) Wechselkurs holen & konvertieren
-        rate = get_usd_to_eur_rate()
-        try:
-            usd = float(card_info["Price USD"])
-            eur = round(usd * rate, 2)
-        except (TypeError, ValueError):
-            eur = None
-
-        df["Price EUR"] = eur
+        # 3) EUR optional
+        if not args.no_eur:
+            rate = get_usd_to_eur_rate()
+            try:
+                usd = float(card_info["Price USD"])
+                eur = round(usd * rate, 2)
+            except (TypeError, ValueError):
+                eur = None
+            df["Price EUR"] = eur
 
         # 4) Spalten-Filter
-        cols = ["Name", "Set", "Rarity", "Price USD", "Price EUR"]
+        cols = ["Name", "Set", "Rarity", "Price USD"]
+        if not args.no_eur:
+            cols.append("Price EUR")
         df = df[cols]
 
         # 5) Ausgabe
-        print(f"Aktueller USD→EUR-Kurs: {rate:.4f}")
+        if args.verbose:
+            print(f"\n=== Detail-Ausgabe für '{name}' ===")
+            print(f"Oracle Text: {card_info.get('Oracle Text')}")
+            print(f"Image URL:   {card_info.get('Image URL')}\n")
+
+        if not args.no_eur:
+            print(f"Aktueller USD→EUR-Kurs: {rate:.4f}")
         print(df.to_string(index=False))
 
         # 6) CSV speichern
-        filename = sample.replace(" ", "_") + "_info.csv"
-        df.to_csv(filename, index=False)
-        print(f"\n✅ CSV-Datei gespeichert unter: {filename}")
+        fname = args.output or f"{name.replace(' ', '_')}_info.csv"
+        df.to_csv(fname, index=False)
+        print(f"\n✅ CSV-Datei gespeichert unter: {fname}")
 
     except requests.HTTPError as http_err:
         code = http_err.response.status_code
