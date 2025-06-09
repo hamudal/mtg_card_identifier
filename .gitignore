@@ -12,3 +12,15 @@ __pycache__/
 # Betriebssystem-Dateien
 .DS_Store
 Thumbs.db
+mtg_identifier.spec
+build/mtg_identifier/Analysis-00.toc
+build/mtg_identifier/base_library.zip
+build/mtg_identifier/EXE-00.toc
+build/mtg_identifier/mtg_identifier.pkg
+build/mtg_identifier/PKG-00.toc
+build/mtg_identifier/PYZ-00.pyz
+build/mtg_identifier/PYZ-00.toc
+build/mtg_identifier/warn-mtg_identifier.txt
+build/mtg_identifier/xref-mtg_identifier.html
+dist/mtg_identifier.exe
+dist/multi_card_info.csv
