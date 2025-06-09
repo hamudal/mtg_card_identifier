@@ -1,92 +1,88 @@
 # MTG Card Identifier 📇
 
-Ein kleines, nützliches Python-Tool zur **Abfrage von Magic: The Gathering Karteninformationen** über die [Scryfall API](https://scryfall.com/docs/api)  
-und zur **automatischen Umrechnung des Kartenpreises von USD → EUR** mittels der [Frankfurter.app API](https://www.frankfurter.app/docs).  
+Ein kleines Python-Tool, um Informationen zu **Magic: The Gathering**-Karten von der [Scryfall API](https://scryfall.com/docs/api) abzurufen und Preise automatisch in EUR umzurechnen (live Wechselkurs von [frankfurter.app](https://www.frankfurter.app/)).
 
-Ergebnisse werden **übersichtlich als DataFrame dargestellt** (ideal in Jupyter Notebook) und können optional als CSV exportiert werden.
-
----
-
-## Features 🚀
-
-✅ Exakte Kartensuche per Name  
-✅ Abfrage folgender Infos: Name, Set, Rarity, Oracle Text, Bild-URL, USD-Preis  
-✅ Live-Umrechnung USD → EUR  
-✅ Export als CSV  
-✅ Robustes Error-Handling  
-✅ Modularer Aufbau — perfekt für Erweiterungen oder Batch-Prozesse  
+Ideal für **Sammler, Händler oder Data-Analysen**.
 
 ---
 
-## Installation 🛠️
+## ✨ Features
 
-Voraussetzung: Python >= 3.10
+✅ Abfrage von 1 bis beliebig vielen Kartennamen  
+✅ Automatische Umrechnung von USD → EUR  
+✅ Speicherung als CSV-Datei  
+✅ Ausgabe als DataFrame in Jupyter Notebook  
+✅ Fehlerhandling für API-Fehler  
+✅ Erweiterbar für eigene Zwecke  
 
-### 1️⃣ Repository klonen
+---
 
+## 🛠️ Installation
+
+1. 📥 Repository klonen:
 ```bash
-git clone https://github.com/DEIN_GITHUB_USERNAME/mtg-card-identifier.git
+git clone https://github.com/DEIN_USERNAME/mtg-card-identifier.git
 cd mtg-card-identifier
 ```
 
-### 2️⃣ Virtuelle Umgebung (optional, empfohlen)
-
+2. 📦 Virtuelle Umgebung anlegen (optional, empfohlen):
 ```bash
 python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
+source venv/bin/activate   # Linux / macOS
+venv\Scripts\activate      # Windows
 ```
 
-### 3️⃣ Abhängigkeiten installieren
-
+3. 📦 Abhängigkeiten installieren:
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Jupyter Notebook starten
+---
 
+## 📝 Nutzung im Jupyter Notebook
+
+1. Jupyter starten:
 ```bash
 jupyter notebook
 ```
 
-Notebook `mtg_card_identifier.ipynb` öffnen und loslegen! 🚀
+2. Notebook `mtg_card_identifier.ipynb` öffnen (oder eigenes anlegen)
 
----
-
-## Beispielnutzung
-
+3. Beispiel-Workflow:
 ```python
-sample_card_name = "Lightning Bolt"
-main(sample_card_name)
+# Beispiel-Liste von Karten
+card_names = [
+    "Lightning Bolt",
+    "Black Lotus",
+    "Counterspell",
+    "Sol Ring",
+    "Island"
+]
+
+# Multi-Card Pipeline ausführen
+# (siehe Notebook Zelle 7️⃣ im Beispiel)
 ```
 
-→ Zeigt die Karte als DataFrame an und speichert sie als CSV.  
-→ **Bild-URL** wird ebenfalls geliefert.
+4. Ergebnis:
+- Ausgabe als DataFrame
+- CSV: `multi_card_info.csv`
 
 ---
 
-## API Quellen
+## ⚠️ Hinweise
 
-- 🎴 **Scryfall API** → [https://scryfall.com/docs/api](https://scryfall.com/docs/api)
-- 💱 **Frankfurter.app** → [https://www.frankfurter.app/docs](https://www.frankfurter.app/docs)
-
----
-
-## Anforderungen
-
-```text
-requests
-pandas
-ipython  # für IPython.display (falls Notebook-Nutzung)
-```
-
-→ bereits in der `requirements.txt` enthalten.
+- **Scryfall API** erlaubt kostenlosen Zugriff — bitte API-Rate-Limits beachten.  
+- **Frankfurter.app** liefert kostenlosen Wechselkurs (ohne API-Key).  
+- Bei API-Ausfällen oder Timeouts ist ein **Retry-Mechanismus** sinnvoll (siehe ToDo).  
+- Das Tool ist **rein privat / educational** und nicht für produktive Massenscrapes gedacht.  
 
 ---
 
-## Hinweise
+## ✅ ToDo / Mögliche Erweiterungen
 
-⚠️ Dieses Tool macht **Live-API-Anfragen** → bei vielen Karten bitte Zeitabstände einhalten (Fair Use bei Scryfall beachten).  
-⚠️ Preisangaben sind **nur so aktuell wie die API sie liefert** — keine Garantie auf Vollständigkeit oder Verfügbarkeit.
+- [ ] Automatischer Retry bei API-Fehlern  
+- [ ] Fortschrittsanzeige (z.B. `tqdm`)  
+- [ ] Logging statt `print()`  
+- [ ] Batch-Import aus CSV (Kartenliste einlesen)  
 
 ---
