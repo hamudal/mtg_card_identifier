@@ -1,10 +1,6 @@
-Name,Set,Rarity,Oracle Text,Image URL,Price USD,Price EUR
-Traveling Chocobo,Final Fantasy,mythic,"You may look at the top card of your library any time.
-You may play lands and cast Bird spells from the top of your library.
-If a land or Bird you control entering the battlefield causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",https://cards.scryfall.io/normal/front/2/4/2462df62-fc35-47ed-9571-40452074dc6d.jpg?1748706549,21.51,18.85
-Lightning Bolt,Ravnica: Clue Edition,uncommon,Lightning Bolt deals 3 damage to any target.,https://cards.scryfall.io/normal/front/7/7/77c6fa74-5543-42ac-9ead-0e890b188e99.jpg?1706239968,0.86,0.75
-Counterspell,Duskmourn: House of Horror Commander,uncommon,Counter target spell.,https://cards.scryfall.io/normal/front/4/f/4f616706-ec97-4923-bb1e-11a69fbaa1f8.jpg?1726837907,1.63,1.43
-Black Lotus,Vintage Masters,bonus,"{T}, Sacrifice this artifact: Add three mana of any one color.",https://cards.scryfall.io/normal/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838,,
-Island,Tarkir: Dragonstorm,common,({T}: Add {U}.),https://cards.scryfall.io/normal/front/1/f/1ff6acc9-581c-468f-894d-41f725da7f33.jpg?1743205101,0.04,0.04
-Serra Angel,Foundations,uncommon,"Flying
-Vigilance (Attacking doesn't cause this creature to tap.)",https://cards.scryfall.io/normal/front/3/c/3cee9303-9d65-45a2-93d4-ef4aba59141b.jpg?1730489152,0.08,0.07
+Name,Set,Rarity,Price USD,Price EUR,Oracle Text,Image URL
+Lightning Bolt,Ravnica: Clue Edition,uncommon,0.86,0.75,Lightning Bolt deals 3 damage to any target.,https://cards.scryfall.io/normal/front/7/7/77c6fa74-5543-42ac-9ead-0e890b188e99.jpg?1706239968
+Black Lotus,Vintage Masters,bonus,,,"{T}, Sacrifice this artifact: Add three mana of any one color.",https://cards.scryfall.io/normal/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838
+Counterspell,Duskmourn: House of Horror Commander,uncommon,1.63,1.43,Counter target spell.,https://cards.scryfall.io/normal/front/4/f/4f616706-ec97-4923-bb1e-11a69fbaa1f8.jpg?1726837907
+Sol Ring,Tarkir: Dragonstorm Commander,uncommon,1.20,1.05,{T}: Add {C}{C}.,https://cards.scryfall.io/normal/front/7/b/7b0ccfd4-f118-4497-9c5a-54cf12000e16.jpg?1743206094
+Island,Tarkir: Dragonstorm,common,0.04,0.04,({T}: Add {U}.),https://cards.scryfall.io/normal/front/1/f/1ff6acc9-581c-468f-894d-41f725da7f33.jpg?1743205101
